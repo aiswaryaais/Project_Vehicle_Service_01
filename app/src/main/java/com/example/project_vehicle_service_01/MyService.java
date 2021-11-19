@@ -25,8 +25,7 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         createNotificationChannel();
-        Formatter formatter = new Formatter();
-        formatter.readfile();
+
 
         Intent intent1 =new Intent(this, MainActivity.class);
         PendingIntent pendingIntent= PendingIntent.getActivity(this,0,intent1,0);
@@ -77,7 +76,10 @@ public class MyService extends Service {
         return manager;
     }
 
-
-
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Formatter formatter = new Formatter();
+        formatter.readfile();
+    }
 }
